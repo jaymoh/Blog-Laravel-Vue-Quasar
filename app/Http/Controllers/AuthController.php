@@ -27,7 +27,8 @@ class AuthController extends AbstractController
         // only active users can login
         $user = User::query()
             ->where(['email' => $data['email']])
-            ->with(['roles',])->first();
+            ->with(['roles'])
+            ->first();
 
         if (!$user) {
             throw new NotFoundHttpException('User with that email does not exist!');

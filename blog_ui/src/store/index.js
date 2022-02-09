@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 // import example from './module-example'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 /*
  * If not building with SSR mode, you can
@@ -14,16 +14,35 @@ Vue.use(Vuex)
  * with the Store instance.
  */
 
+// Import all the resource store files.
+function loadStores() {
+  const context = require.context('./modules', true);
+  return context
+    .keys()
+    .map(context) // import module
+    .map((m) => m.default); // get `default` export from each resolved module
+}
+
+const resourceModules = {};
+
+loadStores().forEach((resource) => {
+  resourceModules[resource.name] = resource;
+});
+
+export const Store = new Vuex.Store({
+  state: {},
+  actions: {},
+  mutations: {},
+  getters: {},
+  modules: {
+    ...resourceModules,
+  },
+
+  // enable strict mode (adds overhead!)
+  // for dev mode only
+  strict: process.env.DEBUGGING,
+});
+
 export default function (/* { ssrContext } */) {
-  const Store = new Vuex.Store({
-    modules: {
-      // example
-    },
-
-    // enable strict mode (adds overhead!)
-    // for dev mode only
-    strict: process.env.DEBUGGING
-  })
-
-  return Store
+  return Store;
 }

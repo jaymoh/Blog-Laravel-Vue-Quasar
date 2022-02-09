@@ -1,15 +1,19 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
+  <q-page>
+    <PostsList />
   </q-page>
 </template>
 
 <script>
+import PostsList from 'components/posts/PostsList';
+
 export default {
-  name: 'PageIndex'
-}
+  name: 'BlogIndex',
+  components: { PostsList },
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {},
+};
 </script>

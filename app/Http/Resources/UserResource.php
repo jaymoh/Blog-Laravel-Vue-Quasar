@@ -23,7 +23,8 @@ class UserResource extends JsonResource
             'created_at' => Carbon::parse($this->created_at)->toDateTimeString(),
             'updated_at' => Carbon::parse($this->updated_at)->toDateTimeString(),
             'relationships' => [
-                'posts' => PostResource::collection($this->whenLoaded('posts'))
+                'posts' => PostResource::collection($this->whenLoaded('posts')),
+                'roles' => $this->whenLoaded('roles')
             ]
         ];
     }
