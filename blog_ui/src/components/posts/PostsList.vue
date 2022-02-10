@@ -3,7 +3,7 @@
     <div class="fit">
       <q-card flat elevated class="q-pa-md q-ma-md">
         <template v-if="postsResults.data.length">
-          <div class="flex justify-end">
+          <div class="flex justify-end q-gutter-lg">
             <q-btn
               size="md"
               class="q-ml-md q-px-sm text-capitalize"
@@ -12,8 +12,40 @@
             >
               Publication Date
             </q-btn>
+            <q-input
+              style="width: 320px"
+              debounce="1000"
+              v-model="pagination.searchQuery"
+              placeholder="Search..."
+              clearable
+            >
+              <template v-slot:prepend>
+                <q-icon name="search" />
+              </template>
+            </q-input>
           </div>
           <PostItem v-for="(item, index) in postsResults.data" :single-post="item" :key="index" />
+          <!-- pagination -->
+          <div>
+            <div class="float-right q-mr-lg">
+              <span class="q-ml-xs q-mb-xs">
+                Showing {{ pagination.from || 0 }} to {{ pagination.to || 0 }} of
+                {{ pagination.total }} posts
+              </span>
+              <q-pagination
+                class="q-mb-xs q-ml-lg"
+                v-model="pagination.page"
+                :max="pagination.lastPage"
+                direction-links
+                :boundary-links="false"
+                :boundary-numbers="true"
+                :max-pages="5"
+                :ellipses="true"
+              >
+              </q-pagination>
+              <div class=""></div>
+            </div>
+          </div>
         </template>
         <div v-else>No Blog Posts to Show</div>
       </q-card>
