@@ -6,7 +6,7 @@
 // Configuration for your app
 // https://v1.quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
-const ESLintPlugin = require('eslint-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = function (/* ctx */) {
   return {
@@ -19,15 +19,10 @@ module.exports = function (/* ctx */) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v1.quasar.dev/quasar-cli/boot-files
-    boot: [
-      'i18n',
-      'axios',
-    ],
+    boot: ['i18n', 'axios'],
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
-    css: [
-      'app.sass'
-    ],
+    css: ['app.sass'],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
@@ -66,8 +61,7 @@ module.exports = function (/* ctx */) {
       // https://v1.quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
       chainWebpack(chain) {
-        chain.plugin('eslint-webpack-plugin')
-          .use(ESLintPlugin, [{extensions: ['js', 'vue']}])
+        chain.plugin('eslint-webpack-plugin').use(ESLintPlugin, [{ extensions: ['js', 'vue'] }]);
       },
     },
 
@@ -75,7 +69,7 @@ module.exports = function (/* ctx */) {
     devServer: {
       https: false,
       port: 8080,
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
     },
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
@@ -86,8 +80,8 @@ module.exports = function (/* ctx */) {
         loadingBar: {
           color: '#901823',
           size: '3px',
-          position: 'top'
-        }
+          position: 'top',
+        },
       },
 
       // Possible values for "importStrategy":
@@ -103,7 +97,7 @@ module.exports = function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [],
     },
 
     // animations: 'all', // --- includes all animations
@@ -112,7 +106,7 @@ module.exports = function (/* ctx */) {
 
     // https://v1.quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
-      pwa: false
+      pwa: false,
     },
 
     // https://v1.quasar.dev/quasar-cli/developing-pwa/configuring-pwa
@@ -131,30 +125,30 @@ module.exports = function (/* ctx */) {
           {
             src: 'icons/icon-128x128.png',
             sizes: '128x128',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'icons/icon-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'icons/icon-256x256.png',
             sizes: '256x256',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'icons/icon-384x384.png',
             sizes: '384x384',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'icons/icon-512x512.png',
             sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
-      }
+            type: 'image/png',
+          },
+        ],
+      },
     },
 
     // Full list of options: https://v1.quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
@@ -164,7 +158,7 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://v1.quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
     capacitor: {
-      hideSplashscreen: true
+      hideSplashscreen: true,
     },
 
     // Full list of options: https://v1.quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
@@ -173,13 +167,11 @@ module.exports = function (/* ctx */) {
 
       packager: {
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
-
         // OS X / Mac App Store
         // appBundleId: '',
         // appCategoryType: '',
         // osxSign: '',
         // protocol: 'myapp://path',
-
         // Windows only
         // win32metadata: { ... }
       },
@@ -187,7 +179,7 @@ module.exports = function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'blog_ui'
+        appId: 'blog_ui',
       },
 
       // More info: https://v1.quasar.dev/quasar-cli/developing-electron-apps/node-integration
@@ -196,7 +188,7 @@ module.exports = function (/* ctx */) {
       extendWebpack(/* cfg */) {
         // do something with Electron main process Webpack cfg
         // chainWebpack also available besides this extendWebpack
-      }
-    }
-  }
-}
+      },
+    },
+  };
+};
