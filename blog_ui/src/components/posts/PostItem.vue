@@ -7,7 +7,7 @@
       </div>
       <div class="flex justify-between">
         <small class="q-mt-lg">{{ prettyDate(singlePost.publication_date) }}</small>
-        <small class="text-overline q-mt-lg">{{ singlePost.relationships.user.name }}</small>
+        <small class="text-overline q-mt-lg">{{ singlePost.relationships.user.username }}</small>
       </div>
     </q-card-section>
     <q-separator />

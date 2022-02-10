@@ -2,28 +2,28 @@
   <div class="col">
     <div class="fit">
       <q-card flat elevated class="q-pa-md q-ma-md">
+        <div class="flex justify-end q-gutter-lg">
+          <q-btn
+            size="md"
+            class="q-ml-md q-px-sm text-capitalize"
+            :icon-right="iconDir"
+            @click="handleSortingByPublicationDate"
+          >
+            Publication Date
+          </q-btn>
+          <q-input
+            style="width: 320px"
+            debounce="1000"
+            v-model="pagination.searchQuery"
+            placeholder="Search..."
+            clearable
+          >
+            <template v-slot:prepend>
+              <q-icon name="search" />
+            </template>
+          </q-input>
+        </div>
         <template v-if="postsResults.data.length">
-          <div class="flex justify-end q-gutter-lg">
-            <q-btn
-              size="md"
-              class="q-ml-md q-px-sm text-capitalize"
-              :icon-right="iconDir"
-              @click="handleSortingByPublicationDate"
-            >
-              Publication Date
-            </q-btn>
-            <q-input
-              style="width: 320px"
-              debounce="1000"
-              v-model="pagination.searchQuery"
-              placeholder="Search..."
-              clearable
-            >
-              <template v-slot:prepend>
-                <q-icon name="search" />
-              </template>
-            </q-input>
-          </div>
           <PostItem v-for="(item, index) in postsResults.data" :single-post="item" :key="index" />
           <!-- pagination -->
           <div>

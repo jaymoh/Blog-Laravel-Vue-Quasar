@@ -4,28 +4,28 @@
       <router-link to="/">
         <img :src="logoImgUrl" class="logo-style responsive" alt="BlogTest" />
       </router-link>
-      <h4 class="h4 q-mt-sm">Log In</h4>
-      <div class="login-box">
+      <h4 class="h4 q-mt-lg q-ma-none">Sign into Your Account</h4>
+      <div class="login-box q-mt-xl">
         <q-form ref="loginForm">
           <q-input
             size="sm"
             label="Email"
             type="email"
-            class="q-ma-xl"
+            class="q-ma-lg"
             v-model="loginForm.email"
             trim
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Email Required']"
           >
             <template v-slot:prepend>
-              <q-icon size="md" name="mail" class="q-ml-md" />
+              <q-icon size="sm" name="mail" class="q-ml-md" />
             </template>
           </q-input>
 
           <q-input
             size="sm"
             label="Password"
-            class="q-ma-xl"
+            class="q-ma-lg"
             type="password"
             v-model="loginForm.password"
             trim
@@ -34,18 +34,18 @@
             :rules="[(val) => (val && val.length > 0) || 'Password Required']"
           >
             <template v-slot:prepend>
-              <q-icon size="md" name="lock" class="q-ml-md" />
+              <q-icon size="sm" name="lock" class="q-ml-md" />
             </template>
           </q-input>
         </q-form>
 
-        <div class="q-ma-xl">
+        <div class="q-mt-xs q-mr-xl q-ml-xl q-mb-xs">
           <q-btn
             :loading="loading"
             :disable="loading"
             rounded
             color="grey"
-            class="full-width q-pa-md q-ma-lg text-capitalize"
+            class="full-width q-pa-sm q-ma-md text-capitalize"
             @click="loginUser"
           >
             <span class="text-h5">Login</span>
@@ -53,6 +53,11 @@
               <q-spinner-facebook />
             </template>
           </q-btn>
+        </div>
+        <div class="q-mb-xl text-subtitle1">
+          <router-link style="text-decoration: none" :to="{ name: 'AuthRegister' }">
+            Register
+          </router-link>
         </div>
       </div>
     </div>
@@ -88,9 +93,10 @@ export default {
               this.loading = false;
 
               const userData = response.data.user;
-              userData.role = userData.relationships.roles.length
-                ? userData.relationships.roles[0].name
-                : 'user';
+              userData.role =
+                userData.relationships.roles && userData.relationships.roles.length
+                  ? userData.relationships.roles[0].name
+                  : 'user';
 
               AppStorage.storeAccessToken(response.data.access_token);
               AppStorage.storeRefreshToken(response.data.refresh_token);
@@ -119,7 +125,7 @@ export default {
   width: 100%
   min-height: 100%
   height: 100vh
-  overflow: auto
+  overflow: scroll
   top: 0
   left: 0
   right: 0
@@ -129,7 +135,7 @@ export default {
   opacity: 1
 
 .logo-style
-  height: 80px
+  height: 60px
 
 .login-box
   background: #ffffff 0% 0% no-repeat padding-box
