@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     prettyDate(value) {
-      return date.formatDate(value, 'YY-MM-DD');
+      return date.formatDate(value, 'DD MMM, YYYY');
     },
   },
 };

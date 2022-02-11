@@ -61,7 +61,7 @@
             type="password"
             v-model="registerForm.password"
             trim
-            @keydown.enter.prevent="registerUser"
+            @keydown.enter.prevent="registerUser()"
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Password Required']"
           >
@@ -77,8 +77,8 @@
             :disable="loading"
             rounded
             color="grey"
-            class="full-width q-pa-sm q-ma-md text-capitalize"
-            @click="registerUser"
+            class="register-btn full-width q-pa-sm q-ma-md text-capitalize"
+            @click="registerUser()"
           >
             <span class="text-h5">Register</span>
             <template v-slot:loading>

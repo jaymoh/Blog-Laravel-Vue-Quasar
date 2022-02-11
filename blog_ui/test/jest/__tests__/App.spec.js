@@ -2,7 +2,7 @@ import { mount, createLocalVue, shallowMount } from '@vue/test-utils';
 import QBUTTON from './demo/QBtn-demo.vue';
 import * as All from 'quasar';
 // import langEn from 'quasar/lang/en-us' // change to any language you wish! => this breaks wallaby :(
-const { Quasar } = All;
+const { Quasar, date } = All;
 
 const components = Object.keys(All).reduce((object, key) => {
   const val = All[key];
@@ -45,5 +45,12 @@ describe('Mount Quasar', () => {
     const button = wrapper.find('button');
     await button.trigger('click');
     expect(vm.counter).toBe(1);
+  });
+
+  // eslint-disable-next-line jest/expect-expect
+  it('formats a date without throwing exception', () => {
+    // test should fail if an exception is thrown
+    let formattedString = date.formatDate(Date.now(), 'DD MMM, YYYY');
+    console.log('formatted String:', formattedString);
   });
 });

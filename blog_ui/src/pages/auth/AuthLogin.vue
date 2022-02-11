@@ -29,7 +29,7 @@
             type="password"
             v-model="loginForm.password"
             trim
-            @keydown.enter.prevent="loginUser"
+            @keydown.enter.prevent="loginUser()"
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Password Required']"
           >
@@ -45,8 +45,8 @@
             :disable="loading"
             rounded
             color="grey"
-            class="full-width q-pa-sm q-ma-md text-capitalize"
-            @click="loginUser"
+            class="login-btn full-width q-pa-sm q-ma-md text-capitalize"
+            @click="loginUser()"
           >
             <span class="text-h5">Login</span>
             <template v-slot:loading>
